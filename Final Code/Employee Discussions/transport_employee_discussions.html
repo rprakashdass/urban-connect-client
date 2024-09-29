@@ -1,0 +1,75 @@
+<html></html>
+<head>
+    <title>Urban Connect</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/front_end/src/Files/CSS/employee_discussions.css">
+
+</head>
+<body>
+    <div class="header">
+        <img alt="Government Emblem" height="80" src="/front_end/src/Files/asserts/emblem.png" width="80"/>
+        <div>
+            <h1>Urban Connect</h1>
+            <p>An government website for connecting government departments</p>
+        </div>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <h2>Search Channels</h2>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search channels...">
+                <button onclick="applyFilter()">Apply</button>
+            </div>
+        </div>
+        <div class="main-content">
+            <h2>Transport Department</h2>
+            <div class="filter-buttons">
+                <button onclick="filterChannels('all')">All</button>
+                <button onclick="filterChannels('Inter Department')">Inter Department</button>
+                <button onclick="filterChannels('Intra Department')">Intra Department</button>
+                <button onclick="filterChannels('Public')">Public</button>
+            </div>
+            <div id="channels">
+                <div class="channel" data-category="Public" onclick="openDiscussion('Transport Issues')">
+                    <h3>Transport issues</h3>
+                    <p><strong>Description:</strong></p>
+                    <p>Improving the transport facility across the city to transfer the goods seemlessly.</p>
+                    <p><strong>Category :</strong> Public</p>
+                </div>
+                <div class="channel" data-category="Intra Department" onclick="openDiscussion('Railway-track')">
+                    <h3>Rail Track Project</h3>
+                    <p><strong>Description:</strong></p>
+                    <p>Rail track project was ongoing on the coimbatore central railway stations so the post your updates in this discussion to know the progress of the project</p>
+                    <p><strong>Category :</strong> Intra Department</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function filterChannels(category) {
+            const channels = document.querySelectorAll('.channel');
+            channels.forEach(channel => {
+                if (category === 'all' || channel.getAttribute('data-category') === category) {
+                    channel.style.display = 'block';
+                } else {
+                    channel.style.display = 'none';
+                }
+            });
+        }
+
+        function applyFilter() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const channels = document.querySelectorAll('.channel');
+            channels.forEach(channel => {
+                const channelName = channel.querySelector('h3').textContent.toLowerCase();
+                if (channelName.includes(searchInput)) {
+                    channel.style.display = 'block';
+                } else {
+                    channel.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

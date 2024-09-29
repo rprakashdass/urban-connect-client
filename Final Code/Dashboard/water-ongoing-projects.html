@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ongoing Projects - Water Department Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #FFF9E9; /* Light Beige */
+    }
+
+    h1, h2, h5 {
+      font-family: 'Roboto', sans-serif;
+      color: #0055A5; /* Accent Text */
+      margin-bottom: 10px;
+    }
+
+    p, .card-text {
+      font-family: Arial, sans-serif;
+      color: #333333; /* Primary Text Color */
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Card and Text Styling */
+    .card {
+      background-color: #eff5f9; /* Level 2 light color */
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: #333333;
+    }
+
+    /* Log Content Styling */
+    .log-content {
+      display: none;
+    }
+
+    footer {
+      bottom: 0;
+      position: fixed;
+      width: 100%;
+      background-color: #dbdbdb; /* Dark Footer */
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <!-- Header -->
+    <header>
+      <h1>Ongoing Projects - Water Department Dashboard</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="row">
+        <div class="col-md-12">
+          <p>Below is a list of ongoing projects for the Water Department.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Water Treatment Plant Upgrade</h5>
+              <p class="card-text">Started on 2022-01-01</p>
+              <p class="card-text">Project description: Upgrade of the water treatment plant to increase capacity and improve water quality.</p>
+              <button class="btn btn-primary" data-project="water-treatment-plant-upgrade">View Log</button>
+              <div class="log-content" id="water-treatment-plant-upgrade-log">
+                <h2>Project Overview</h2>
+                <p>The Water Treatment Plant Upgrade project involves the upgrade of the water treatment plant to increase capacity and improve water quality.</p>
+                <h5>Project Timeline</h5>
+                <ul>
+                  <li>2022-01-01: Project initiation</li>
+                  <li>2022-02-01: Site preparation and excavation</li>
+                  <li>2022-04-01: Plant upgrade work</li>
+                  <li>2022-06-01: Final touches and completion (expected)</li>
+                </ul>
+                <h5>Project Images</h5>
+                <img src="water-treatment-plant-upgrade-image1.jpg" alt="Water Treatment Plant Upgrade Image 1" class="img-fluid">
+                <img src="water-treatment-plant-upgrade-image2.jpg" alt="Water Treatment Plant Upgrade Image 2" class="img-fluid">
+                <img src="water-treatment-plant-upgrade-image3.jpg" alt="Water Treatment Plant Upgrade Image 3" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title ">Water Distribution Network Expansion</h5>
+              <p class="card-text">Started on 2022-02-01</p>
+              <p class="card-text">Project description: Expansion of the water distribution network to reach more areas and improve water supply.</p>
+              <button class="btn btn-primary" data-project="water-distribution-network-expansion">View Log</button>
+              <div class="log-content" id="water-distribution-network-expansion-log">
+                <h2>Project Overview</h2>
+                <p>The Water Distribution Network Expansion project involves the expansion of the water distribution network to reach more areas and improve water supply.</p>
+                <h5>Project Timeline</h5>
+                <ul>
+                  <li>2022-02-01: Project initiation</li>
+                  <li>2022-03-01: Site preparation and excavation</li>
+                  <li>2022-05-01: Pipe laying and connection work</li>
+                  <li>2022-07-01: Final touches and completion (expected)</li>
+                </ul>
+                <h5>Project Images</h5>
+                <img src="water-distribution-network-expansion-image1.jpg" alt="Water Distribution Network Expansion Image 1" class="img-fluid">
+                <img src="water-distribution-network-expansion-image2.jpg" alt="Water Distribution Network Expansion Image 2" class="img-fluid">
+                <img src="water-distribution-network-expansion-image3.jpg" alt="Water Distribution Network Expansion Image 3" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Water Quality Monitoring System</h5>
+              <p class="card-text">Started on 2022-03-01</p>
+              <p class="card-text">Project description: Implementation of a water quality monitoring system to track water quality in real-time.</p>
+              <button class="btn btn-primary" data-project="water-quality-monitoring-system">View Log</button>
+              <div class="log-content" id="water-quality-monitoring-system-log">
+                <h2>Project Overview</h2>
+                <p>The Water Quality Monitoring System project involves the implementation of a water quality monitoring system to track water quality in real-time.</p>
+                <h5>Project Timeline</h5>
+                <ul>
+                  <li>2022-03-01: Project initiation</li>
+                  <li>2022-04-01: System design and development</li>
+                  <li>2022-06-01: System testing and deployment</li>
+                  <li>2022-08-01: Final touches and completion (expected)</li>
+                </ul>
+                <h5>Project Images</h5>
+                <img src="water-quality-monitoring-system-image1.jpg" alt="Water Quality Monitoring System Image 1" class="img-fluid">
+                <img src="water-quality-monitoring-system-image2.jpg" alt="Water Quality Monitoring System Image 2" class="img-fluid">
+                <img src="water-quality-monitoring-system-image3.jpg" alt="Water Quality Monitoring System Image 3" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2022 Water Department Dashboard</p>
+    </footer>
+
+    <script>
+        const projectCards = document.querySelectorAll('.card');
+        projectCards.forEach((card) => {
+          const viewLogButton = card.querySelector('button[data-project]');
+          let logVisible = false;
+          viewLogButton.addEventListener('click', (e) => {
+            const project = e.target.dataset.project;
+            const logContent = document.getElementById(`${project}-log`);
+            if (logVisible) {
+              logContent.style.display = 'none';
+              logVisible = false;
+            } else {
+              logContent.style.display = 'block';
+              logVisible = true;
+            }
+          });
+        });
+      </script>
+  </div>
+</body>
+</html>

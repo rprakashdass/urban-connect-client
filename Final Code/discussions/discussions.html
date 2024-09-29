@@ -1,0 +1,103 @@
+<html>
+<head>
+    <title>Urban Connect</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            color: #333333;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #000;
+            background-color:#FFFFFF;
+            color:  #333333;
+        }
+        .header img {
+            height: 80px;
+            margin-right: 20px;
+        }
+        .header h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 36px;
+            margin: 0;
+        }
+        .header p {
+            margin: 0;
+            font-size: 14px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+            color: #0055A5;
+        }
+        .discussion-item {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .discussion-item h3 {
+            margin-top: 0;
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+            color: #0055A5;
+        }
+        .discussion-item p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #333333;
+        }
+        .discussion-item .meta {
+            font-size: 12px;
+            color: #666666;
+        }
+        .discussion-item .meta i {
+            margin-right: 5px;
+        }
+    </style>
+    <script>
+        function openDiscussion(topic) {
+            var topicPage = topic.replace(/\s+/g, '-').toLowerCase() + '.html';
+            window.location.href = topicPage;
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <!-- <img alt="Government Emblem" height="80" src="/front_end/src/Files/asserts/emblem.png" width="80"/> -->
+        <img alt="Government Emblem" height="80" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.8elmfZNQyVftbH8_j59DPgHaHa%26pid%3DApi&f=1&ipt=e424492c4f701e404aca5a6564ec4b22970996dbb816ad74822b2716620e938e&ipo=images" width="80"/>
+        <div>
+            <h1>Urban Connect</h1>
+            <p>An government website for connecting government departments</p>
+        </div>
+    </div>
+    <div class="content">
+        <h2>Public Discussion Forum :</h2>
+        <div class="discussion-item" onclick="openDiscussion('Civil Issues')">
+            <h3>Civil</h3>
+            <p><strong>Description:</strong><br/>Improving the quality of public places in the city</p>
+        </div>
+        <div class="discussion-item" onclick="openDiscussion('Road&Highways Issues')">
+            <h3>Road & Highways</h3>
+            <p><strong>Description:</strong><br/>Improving the road in the city </p>
+        </div>
+        <div class="discussion-item" onclick="openDiscussion('Water Issues')">
+            <h3>Water Department</h3>
+            <p><strong>Description:</strong><br/>Post your issues related to water pipe problems </p>
+        </div>
+    </div>
+</body>
+</html>

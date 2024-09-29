@@ -1,0 +1,112 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #FFF9E9; /* Light Beige */
+}
+
+.container {
+  max-width: 1900px;
+  top:0;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 0;
+}
+
+header {
+  background-color: #e9e8e8; /* Primary Color for headings */
+  color: #0055A5;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+header h1 {
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  color:black;
+}
+
+footer {
+  background-color: #b1b0b0; /* Dark Footer */
+  color: rgb(49, 49, 49);
+  padding: 10px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dashboard-section {
+  margin-bottom: 40px;
+}
+
+.department-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.department-card {
+  background-color: #eff5f9; /* Level 2 light color */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.project-overview,
+.resource-overview,
+.meeting-overview,
+.training-overview,
+.forum-overview {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.project-stats,
+.resource-stats,
+.meeting-stats,
+.training-stats,
+.forum-stats {
+  background-color: #eff5f9; /* Level 2 light color */
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  flex: 1;
+  margin-right: 20px;
+}
+
+.project-stats:last-child,
+.resource-stats:last-child,
+.meeting-stats:last-child,
+.training-stats:last-child,
+.forum-stats:last-child {
+  margin-right: 0;
+}
+
+.project-list,
+.resource-list,
+.meeting-list,
+.training-list,
+.forum-list {
+  background-color: #eff5f9; /* Level 2 light color */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.project-item,
+.resource-item,
+.meeting-item,
+.training-item,
+.forum-post {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.project-item:last-child,
+.resource-item:last-child,
+.meeting-item:last-child,
+.training-item:last-child,
+.forum-post:last-child {
+  border-bottom: none;
+}

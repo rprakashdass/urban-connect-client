@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Completed Projects - Road and Highways Department Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #FFF9E9; /* Light Beige */
+    }
+
+    h1, h2, h5 {
+      font-family: 'Roboto', sans-serif;
+      color: #0055A5; /* Accent Text */
+      margin-bottom: 10px;
+    }
+
+    p, .card-text {
+      font-family: Arial, sans-serif;
+      color: #333333; /* Primary Text Color */
+    }
+
+    /* Card and Text Styling */
+    .card {
+      background-color: #eff5f9; /* Level 2 light color */
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: #333333;
+    }
+
+    /* Log Content Styling */
+    .log-content {
+      display: none;
+    }
+    footer {
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+  background-color: #dbdbdb; /* Dark Footer */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <!-- Header -->
+    <header>
+      <h1>Completed Projects - Road and Highways Department Dashboard</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="row">
+        <div class="col-md-12">
+          <p>Below is a list of completed projects for the Road and Highways Department.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">National Highway Widening Project</h5>
+              <p class="card-text">Completed on 2023-02-15</p>
+              <p class="card-text">Project description: Widening of a 50km stretch of national highway to reduce traffic congestion and improve safety.</p>
+              <button class="btn btn-primary" data-project="national-highway-widening">View Log</button>
+              <div class="log-content" id="national-highway-widening-log">
+                <h2>Project Overview</h2>
+                <p>The National Highway Widening Project involved the widening of a 50km stretch of national highway to reduce traffic congestion and improve safety.</p>
+                <h5>Project Timeline</h5>
+                <ul>
+                  <li>2022-01-01: Project initiation</li>
+                  <li>2022-03-01: Site preparation and excavation</li>
+                  <li>2022-06-01: Road widening work</li>
+                  <li>2023-02-15: Project completion</li>
+                </ul>
+                <h5>Project Images</h5>
+                <img src="national-highway-widening-image1.jpg" alt="National Highway Widening Image 1" class="img-fluid">
+                <img src="national-highway-widening-image2.jpg" alt="National Highway Widening Image 2" class="img-fluid">
+                <img src="national-highway-widening-image3.jpg" alt="National Highway Widening Image 3" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">State Highway Rehabilitation Project</h5>
+              <p class="card-text">Completed on 2023-03-20</p>
+              <p class="card-text">Project description: Rehabilitation of a 20km stretch of state highway to improve road safety and reduce maintenance costs.</p>
+              <button class="btn btn-primary" data-project="state-highway-rehab ilitation">View Log</button>
+              <div class="log-content" id="state-highway-rehabilitation-log">
+                <h2>Project Overview</h2>
+                <p>The State Highway Rehabilitation Project involved the rehabilitation of a 20km stretch of state highway to improve road safety and reduce maintenance costs.</p>
+                <h5>Project Timeline</h5>
+                <ul>
+                  <li>2022-04-01: Project initiation</li>
+                  <li>2022-06-01: Site preparation and excavation</li>
+                  <li>2022-09-01: Road resurfacing work</li>
+                  <li>2023-03-20: Project completion</li>
+                </ul>
+                <h5>Project Images</h5>
+                <img src="state-highway-rehabilitation-image1.jpg" alt="State Highway Rehabilitation Image 1" class="img-fluid">
+                <img src="state-highway-rehabilitation-image2.jpg" alt="State Highway Rehabilitation Image 2" class="img-fluid">
+                <img src="state-highway-rehabilitation-image3.jpg" alt="State Highway Rehabilitation Image 3" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Rural Road Construction Project</h5>
+              <p class="card-text">Completed on 2023-05-01</p>
+              <p class="card-text">Project description: Construction of a new rural road to improve connectivity and reduce travel time for rural communities.</p>
+              <button class="btn btn-primary" data-project="rural-road-construction">View Log</button>
+              <div class="log-content" id="rural-road-construction-log">
+                <h2>Project Overview</h2>
+                <p>The Rural Road Construction Project involved the construction of a new rural road to improve connectivity and reduce travel time for rural communities.</p>
+                <h5>Project Timeline</h5>
+                <ul>
+                  <li>2022-06-01: Project initiation</li>
+                  <li>2022-08-01: Site preparation and excavation</li>
+                  <li>2022-11-01: Road construction work</li>
+                  <li>2023-05-01: Project completion</li>
+                </ul>
+                <h5>Project Images</h5>
+                <img src="rural-road-construction-image1.jpg" alt="Rural Road Construction Image 1" class="img-fluid">
+                <img src="rural-road-construction-image2.jpg" alt="Rural Road Construction Image 2" class="img-fluid">
+                <img src="rural-road-construction-image3.jpg" alt="Rural Road Construction Image 3" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Road and Highways Department Dashboard</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const projectCards = document.querySelectorAll('.card');
+      projectCards.forEach((card) => {
+        const viewLogButton = card.querySelector('button[data-project]');
+        let logVisible = false;
+        viewLogButton.addEventListener('click', (e) => {
+          const project = e.target.dataset.project;
+          const logContent = document.getElementById(`${project}-log`);
+          if (logVisible) {
+            logContent.style.display = 'none';
+            logVisible = false;
+          } else {
+            logContent.style.display = 'block';
+            logVisible = true;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

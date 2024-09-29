@@ -1,0 +1,169 @@
+<html>
+<head>
+    <title>Urban Connect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="../CSS/department.css">
+</head>
+<body>
+    <!-- Menu Toggle Button -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Menu Close Button -->
+    <div class="menu-close" onclick="toggleMenu()">
+        <i class="fas fa-times"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Home</a>
+        <a href="discussion.html">Discussions</a>
+        <a href="#">Tasks</a>
+        <a href="#">Upcoming Projects</a>
+        <div class="bottom-links">
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="../asserts/emblem.png" alt="Urban Connect Logo" width="50" height="50">
+            Urban Connect
+        </div>
+        <div class="subheader">A government website for connecting government departments</div>
+ 
+
+        <!-- Department Name -->
+        <div class="department-name">Department Name</div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Recent Projects Section -->
+            <div class="box">
+                <h3>Recent Projects :</h3>
+                <p>Project 1 title: This project was completed recently.</p>
+                <a href="#">Read more...</a>
+                <p>Project 2 title: This project was completed recently.</p>
+                <a href="#">Read more...</a>
+                <p>Project 3 title: This project was completed recently.</p>
+                <a href="#">Read more...</a>
+                <p>Project 1 title: This project was completed recently.</p>
+                <a href="#">Read more...</a>
+                <p>Project 2 title: This project was completed recently.</p>
+                <a href="#">Read more...</a>
+                <p>Project 3 title: This project was completed recently.</p>
+                <a href="#">Read more...</a>
+            </div>
+
+            <!-- News Section -->
+            <div class="box">
+                <h3>News :</h3>
+                <p>Some news related to department officers can be found here.</p>
+                <p>The Centre announced a financial assistance of Rs 3,300 crore to both Telugu states.</p>
+                <p>DMK MP A. Raja pointed out that the Waqf Act was passed in 1913, which finds no ..</p>
+                <p>The government has announced new policies to improve urban infrastructure.</p>
+                <p>Some news related to department officers can be found here.</p>
+                <p>The Centre announced a financial assistance of Rs 3,300 crore to both Telugu states.</p>
+                <p>DMK MP A. Raja pointed out that the Waqf Act was passed in 1913, which finds no ..</p>
+                <p>The government has announced new policies to improve urban infrastructure.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard content">
+        <h2>
+         Department Projects Overview:
+        </h2>
+        <div class="overview">
+         <div class="chart">
+          <h3>
+           States benefits
+          </h3>
+          <img alt="Pie chart showing state benefits" height="300" src="../asserts/pie chart.png" width="400"/>
+          <ul>
+           <li>
+            Tamil Nadu
+           </li>
+           <li>
+            Andhra Pradesh
+           </li>
+           <li>
+            Delhi
+           </li>
+           <li>
+            Uttar Pradesh
+           </li>
+           <li>
+            Bihar
+           </li>
+          </ul>
+         </div>
+         <div class="chart">
+          <h3>
+           Projects completion
+          </h3>
+          <img alt="Bar chart showing project completion" height="300" src="../asserts/Figure_1.png" />
+         </div>
+        </div>
+        <div class="projects">
+         <h3>
+          Ongoing Projects :
+         </h3>
+         <div class="project-item">
+          <h4>
+           Project Title
+          </h4>
+          <p>
+           Descriptions of the projects is given here.
+          </p>
+          <div class="progress-bar">
+           <div class="bar">
+           </div>
+           <div class="percentage">
+            75%
+           </div>
+          </div>
+         </div>
+         <div class="project-item">
+          <h4>
+           Project Title
+          </h4>
+          <p>
+           Descriptions of the projects is given here.
+          </p>
+          <div class="progress-bar">
+           <div class="bar">
+           </div>
+           <div class="percentage">
+            75%
+           </div>
+          </div>
+         </div>
+
+    <!-- JavaScript for Sidebar Toggle -->
+    <script>
+        function toggleMenu() {
+            var sidebar = document.querySelector('.sidebar');
+            var menuClose = document.querySelector('.menu-close');
+            var menuToggle = document.querySelector('.menu-toggle');
+    
+            // Toggle sidebar open/close
+            sidebar.classList.toggle('open');
+            menuClose.classList.toggle('open');
+    
+            // Hide/show menu-toggle
+            menuToggle.classList.toggle('hidden');
+        }
+    
+        // Show menu-toggle when menu-close is clicked
+        document.querySelector('.menu-close').addEventListener('click', function() {
+            document.querySelector('.menu-toggle').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

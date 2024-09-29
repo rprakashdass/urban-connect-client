@@ -1,0 +1,355 @@
+<html>
+<head>
+    <title>Urban Connect</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+            position: fixed;
+            width: 98%;
+            height:40px;
+            top:0;
+            background-color: white;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header .controls {
+            display: flex;
+            gap: 10px;
+        }
+        .header .controls button {
+            padding: 5px 10px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .header .controls button:hover {
+            background-color: #e0e0e0;
+        }
+        .header .controls .dark-mode {
+            background-color: #000;
+            color: #fff;
+        }
+        .content {
+            padding: 20px;
+        }
+        .features {
+            text-align: center;
+        }
+        .features h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .features .feature-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .features .feature-item {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            width: 150px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .features .feature-item:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .feature-description {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .feature-description h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .feature-description p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .feature-description img{
+            width: 150px;
+            height: 150px;
+        }
+        .projects {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .projects h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .projects button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .projects button:hover {
+            background-color: #0056b3;
+        }
+
+        .get-started {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 300px;
+            margin-top: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .get-started {
+                padding: 15px;
+                height: auto;
+                min-height: 200px;
+            }
+        }
+
+        .get-started:hover {
+            background-color: #0056b3;
+        }
+
+        /* Dark mode styles */
+        .dark-mode-active {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .dark-mode-active .header {
+            background-color: #333; /* Dark background for header */
+            color: #fff; /* White text color for header */
+            border-bottom: 1px solid #666;
+        }
+        .dark-mode-active .feature-item {
+            background-color: #333;
+            color: #fff;
+        }
+        .dark-mode-active .feature-item:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer p {
+            margin: 0;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Urban Connect</h1>
+        <div class="controls">
+            <button class="dark-mode">Dark Mode</button>
+            <button class="font-size-increase">A+</button>
+            <button class="font-size-decrease">A-</button>
+        </div>
+    </div>
+
+    <!-- Get Started Button -->
+    <div class="get-started" onclick="move()">
+        <h2>Get Started with Urban Connect</h2>
+        <p>Join us now to streamline your urban management tasks!</p>
+    </div>
+
+    <div class="content">
+        <div class="features">
+            <h2>Urban Connect Features</h2>
+            <div class="feature-list">
+                <div class="feature-item" onclick="scrollToFeature('dynamic-login')">
+                    Dynamic Login
+                </div>
+                <div class="feature-item" onclick="scrollToFeature('prediction')">
+                    Prediction of Co-relating Departments
+                </div>
+                <div class="feature-item" onclick="scrollToFeature('scheduling')">
+                    Synchronized Task Scheduling
+                </div>
+                <div class="feature-item" onclick="scrollToFeature('phasing')">
+                    Unified Project Phasing
+                </div>
+                <div class="feature-item" onclick="scrollToFeature('dashboard')">
+                    AI-Driven Dashboard Generation
+                </div>
+                <div class="feature-item" onclick="scrollToFeature('report')">
+                    AI-Driven Report Generation
+                </div>
+                <div class="feature-item" onclick="scrollToFeature('resources')">
+                    Dedicated Resources Database
+                </div>
+                <div class="feature-item" onclick="scrollToFeature('tracking')">
+                    Tracking of Projects and Resources
+                </div>
+                <div class="feature-item" onclick="scrollToFeature('seminars')">
+                    Seminars and Meetings Platform
+                </div>
+                <div class="feature-item" onclick="scrollToFeature('complaints')">
+                    Public Complaints Collection
+                </div>
+                <div class="feature-item" onclick="scrollToFeature('forum')">
+                    Discussion Forum
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature Descriptions with More Content -->
+        <div class="feature-description" id="dynamic-login">
+            <h3>Dynamic Login</h3>
+            <p>Departments, employees, and agencies can log in with role-specific access. This enhances security and ensures that each user sees only the information relevant to them. With customizable roles, permissions can be set at a granular level, providing flexibility to organizations.</p>
+            <img src="../asserts/login-password.png" alt="Dynamic Login" />
+        </div>
+
+        <div class="feature-description" id="prediction">
+            <h3>Prediction of Co-relating Departments</h3>
+            <p>Advanced AI analyzes data to predict which departments need to collaborate for a given project. By identifying potential overlaps, this feature helps streamline communication, reduce redundant tasks, and save time. It enhances productivity by ensuring resources from different departments work in harmony.</p>
+            <img src="../asserts/team-work.png" alt="Prediction of Departments" />
+        </div>
+
+        <div class="feature-description" id="scheduling">
+            <h3>Synchronized Task Scheduling</h3>
+            <p>This feature integrates task management across departments. By offering a drag-and-drop interface, project managers can quickly adjust schedules, allocate resources, and resolve conflicts in real-time. The system ensures that all tasks align with overall project deadlines, preventing bottlenecks.</p>
+            <img src="../asserts/task-completed.png" alt="Task Scheduling" />
+        </div>
+
+        <div class="feature-description" id="phasing">
+            <h3>Unified Project Phasing</h3>
+            <p>Project phasing divides large projects into smaller, manageable phases. With Urban Connect, teams can monitor the progress of each phase individually, while keeping the overall project goals in view. This promotes a structured approach, with deadlines and deliverables for each phase clearly defined.</p>
+            <img src="../asserts/project-management.png" alt="Project Phasing" />
+        </div>
+
+        <div class="feature-description" id="dashboard">
+            <h3>AI-Driven Dashboard Generation</h3>
+            <p>The AI-powered dashboard provides real-time insights into ongoing projects. With customizable widgets, users can focus on the metrics that matter most, such as resource allocation, project milestones, and key performance indicators (KPIs). This enables data-driven decision-making.</p>
+            <img src="../asserts/dashboard.png" alt="AI Dashboard" />
+        </div>
+
+        <div class="feature-description" id="report">
+            <h3>AI-Driven Report Generation</h3>
+            <p>Automatically generate detailed reports based on project data. The AI identifies trends, highlights potential issues, and offers solutions. Reports can be exported in multiple formats, such as PDF and Excel, to share with stakeholders, ensuring transparency and accountability.</p>
+            <img src="../asserts/report.png" alt="Report Generation" />
+        </div>
+
+        <div class="feature-description" id="resources">
+            <h3>Dedicated Resources Database</h3>
+            <p>A comprehensive database for storing details of resources, such as materials, tools, and personnel. It allows for easy tracking of resource availability, helping in procurement, allocation, and avoiding overuse or shortages. This feature integrates seamlessly with scheduling to ensure efficient resource use.</p>
+            <img src="../asserts/database-locked.png" alt="Resources Database" />
+        </div>
+
+        <div class="feature-description" id="tracking">
+            <h3>Tracking of Projects and Resources</h3>
+            <p>Track the progress of projects and the utilization of resources in real-time, ensuring accountability. This feature provides visual timelines, Gantt charts, and progress bars to give users an overview of all ongoing tasks. Automated alerts notify project managers when resources are low or deadlines are approaching.</p>
+            <img src="../asserts/tracking-app.png" alt="Tracking Projects" />
+        </div>
+
+        <div class="feature-description" id="seminars">
+            <h3>Seminars and Meetings Platform</h3>
+            <p>Organize and manage seminars and meetings efficiently with this feature. It includes scheduling, invitations, reminders, and even video conferencing integration. This ensures that all team members are aligned, and meetings happen on time with clear agendas.</p>
+            <img src="../asserts/shareholder-meeting.png" alt="Seminars Platform" />
+        </div>
+
+        <div class="feature-description" id="complaints">
+            <h3>Public Complaints Collection</h3>
+            <p>Collect public complaints and feedback seamlessly. This feature enables users to submit complaints, track their status, and receive updates, enhancing transparency and responsiveness. It integrates with the system's task management to ensure that complaints are assigned to the right departments for quick resolution.</p>
+            <img src="../asserts/complaint.png" alt="Complaints Collection" />
+        </div>
+
+        <div class="feature-description" id="forum">
+            <h3>Discussion Forum</h3>
+            <p>Encourage open discussions with a built-in forum where users can share ideas, ask questions, and collaborate on solutions for urban issues. Moderators can guide discussions, ensuring that conversations remain constructive and focused on actionable solutions.</p>
+            <img src="../asserts/discussion.png" alt="Discussion Forum" />
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Urban Connect | <a href="#privacy-policy">Privacy Policy</a> | <a href="#terms-of-service">Terms of Service</a> | <a href="#contact-us">Contact Us</a></p>
+        <p>Follow us: 
+            <a href="#"><i class="fab fa-facebook"></i></a> 
+            <a href="#"><i class="fab fa-twitter"></i></a> 
+            <a href="#"><i class="fab fa-instagram"></i></a> 
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </p>
+    </div>
+
+    <script>
+        function move(){
+            alert("Getting Started...");
+            window.location.href = "index.html";
+        }
+        let fontSize = 16; // Default font size in pixels
+
+        document.querySelector('.font-size-increase').addEventListener('click', function() {
+            fontSize += 2; // Increase font size
+            document.body.style.fontSize = fontSize + 'px';
+        });
+
+        document.querySelector('.font-size-decrease').addEventListener('click', function() {
+            fontSize = Math.max(12, fontSize - 2); // Decrease font size but not below 12px
+            document.body.style.fontSize = fontSize + 'px';
+        });
+
+        document.querySelector('.dark-mode').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode-active');
+            this.classList.toggle('dark-mode'); // Change button color
+            if (this.classList.contains('dark-mode')) {
+                this.textContent = 'Dark Mode';
+            } else {
+                this.textContent = 'Light Mode';
+            }
+        });
+
+        function scrollToFeature(featureId) {
+            const featureElement = document.getElementById(featureId);
+            if (featureElement) {
+                featureElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+    </script>
+</body>
+</html>

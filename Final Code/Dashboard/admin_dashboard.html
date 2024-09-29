@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin_dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Admin Dashboard</h1>
+    </header>
+
+    <main>
+      <div class="dashboard-section">
+        <h2>Department Overview</h2>
+        <div class="department-cards" id="department-cards"></div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>Project Management</h2>
+        <div class="project-overview">
+          <div class="project-stats">
+            <h3>Total Projects</h3>
+            <p id="total-projects">0</p>
+          </div>
+          <div class="project-stats">
+            <h3>Ongoing Projects</h3>
+            <p id="ongoing-projects">0</p>
+          </div>
+          <div class="project-stats">
+            <h3>Completed Projects</h3>
+            <p id="completed-projects">0</p>
+          </div>
+        </div>
+        <div class="project-list" id="project-list"></div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>Resource Utilization</h2>
+        <div class="resource-overview">
+          <div class="resource-stats">
+            <h3>Total Resources</h3>
+            <p id="total-resources">0</p>
+          </div>
+          <div class="resource-stats">
+            <h3>Available Resources</h3>
+            <p id="available-resources">0</p>
+          </div>
+          <div class="resource-stats">
+            <h3>Allocated Resources</h3>
+            <p id="allocated-resources">0</p>
+          </div>
+        </div>
+        <div class="resource-list" id="resource-list"></div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>Coordination and Collaboration</h2>
+        <div class="meeting-overview">
+          <div class="meeting-stats">
+            <h3>Upcoming Meetings</h3>
+            <p id="upcoming-meetings">0</p>
+          </div>
+          <div class="meeting-stats">
+            <h3>Past Meetings</h3>
+            <p id="past-meetings">0</p>
+          </div>
+        </div>
+        <div class="meeting-list" id="meeting-list"></div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>Capacity Building</h2>
+        <div class="training-overview">
+          <div class="training-stats">
+            <h3>Upcoming Trainings</h3>
+            <p id="upcoming-trainings">0</p>
+          </div>
+          <div class="training-stats">
+            <h3>Past Trainings</h3>
+            <p id="past-trainings">0</p>
+          </div>
+        </div>
+        <div class="training-list" id="training-list"></div>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <p>&copy; 2024 Department Dashboard. All Rights Reserved.</p>
+  </footer>
+  <script src="admin_dashboard.js"></script>
+</body>
+</html>

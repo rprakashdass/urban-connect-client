@@ -1,0 +1,137 @@
+<html></html>
+<head>
+    <title>Urban Connect</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/front_end/src/Files/CSS/admin_discussion.css"> -->
+    <link rel="stylesheet" href="admin_discussion.css">
+</head>
+<body>
+    <div class="header">
+        <img alt="Government Emblem" height="80" src="/front_end/src/Files/asserts/emblem.png" width="80"/>
+        <div>
+            <h1>Urban Connect</h1>
+            <p>An government website for connecting government departments</p>
+        </div>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <h2>Search Channels</h2>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search channels...">
+                <button onclick="applyFilter()">Apply</button>
+            </div>
+            <button onclick="showOverlay()">Create Channel</button>
+        </div>
+        <div class="main-content">
+            <h2>Transport</h2>
+            <div class="filter-buttons">
+                <button onclick="filterChannels('all')">All</button>
+                <button onclick="filterChannels('Inter Department')">Inter Department</button>
+                <button onclick="filterChannels('Intra Department')">Intra Department</button>
+                <button onclick="filterChannels('Public')">Public</button>
+            </div>
+            <div id="channels">
+                <div class="channel" data-category="Public" onclick="openDiscussion('Transport Issues')">
+                    <h3>Transport issues</h3>
+                    <p><strong>Description:</strong></p>
+                    <p>Improving the transport facility across the city to transfer the goods seemlessly.</p>
+                    <p><strong>Category :</strong> Public</p>
+                </div>
+                <div class="channel" data-category="Intra Department" onclick="openDiscussion('Railway-track')">
+                    <h3>Rail Track Project</h3>
+                    <p><strong>Description:</strong></p>
+                    <p>Rail track project was ongoing on the coimbatore central railway stations so the post your updates in this discussion to know the progress of the project</p>
+                    <p><strong>Category :</strong> Intra Department</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <h2>Create Channel</h2>
+            <label for="channel-name">Channel Name:</label>
+            <input type="text" id="channel-name">
+            <label for="channel-description">Description:</label>
+            <textarea id="channel-description"></textarea>
+            <label for="channel-category">Category:</label>
+            <select id="channel-category">
+                <option value="Inter Department">Inter Department</option>
+                <option value="Intra Department">Intra Department</option>
+                <option value="Public">Public</option>
+            </select>
+            <button onclick="addChannel()">Add Channel</button>
+            <button onclick="hideOverlay()">Cancel</button>
+        </div>
+    </div>
+    <script>
+        function openDiscussion(topic) {
+            var topicPage = topic.replace(/\s+/g, '-').toLowerCase() + '.html';
+            window.location.href = topicPage;
+        }
+    </script>
+    <script>
+        function filterChannels(category) {
+            const channels = document.querySelectorAll('.channel');
+            channels.forEach(channel => {
+                if (category === 'all' || channel.getAttribute('data-category') === category) {
+                    channel.style.display = 'block';
+                } else {
+                    channel.style.display = 'none';
+                }
+            });
+        }
+
+        function showOverlay() {
+            document.getElementById('overlay').style.display = 'flex';
+        }
+
+        function hideOverlay() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function addChannel() {
+            const name = document.getElementById('channel-name').value;
+            const description = document.getElementById('channel-description').value;
+            const category = document.getElementById('channel-category').value;
+
+            const channelDiv = document.createElement('div');
+            channelDiv.className = 'channel';
+            channelDiv.setAttribute('data-category', category);
+
+            const channelName = document.createElement('h3');
+            channelName.textContent = name;
+            channelDiv.appendChild(channelName);
+
+            const channelDescriptionLabel = document.createElement('p');
+            channelDescriptionLabel.innerHTML = '<strong>Description:</strong>';
+            channelDiv.appendChild(channelDescriptionLabel);
+
+            const channelDescription = document.createElement('p');
+            channelDescription.textContent = description;
+            channelDiv.appendChild(channelDescription);
+
+            const channelCategory = document.createElement('p');
+            channelCategory.innerHTML = `<strong>Category :</strong> ${category}`;
+            channelDiv.appendChild(channelCategory);
+
+            document.getElementById('channels').appendChild(channelDiv);
+
+            hideOverlay();
+        }
+
+        function applyFilter() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const channels = document.querySelectorAll('.channel');
+            channels.forEach(channel => {
+                const channelName = channel.querySelector('h3').textContent.toLowerCase();
+                if (channelName.includes(searchInput)) {
+                    channel.style.display = 'block';
+                } else {
+                    channel.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title>Urban Connect - Public Discussion Forum</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/discussion_chat_temp.css">
+</head>
+<body>+
+    <div class="header">
+        <img alt="Government Emblem" height="80" src="../asserts/emblem.png" width="80"/>
+        <div>
+            <h1>Urban Connect</h1>
+            <p>An government website for connecting government departments</p>
+        </div>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <h3>Other Discussions</h3>
+            <ul>
+                <li>Civil Discussions</li>
+                <li>Water pipe issues</li>
+                <li>Transport issues</li>
+            </ul>
+        </div>
+        <div class="discussion">
+            <h3>Road & Highways Discussions</h3>
+            <div id="posts">
+                <div class="post">
+                    <p>Ensuring a high-quality, equitable public education system is a key priority for many citizens and policymakers. This involves debates around K-12 school funding, teacher salaries and training, curriculum standards, and access to early childhood education and higher education.</p>
+                    <p class="meta">Posted By : Das (gr) Praskash Don<br/>Location : Coimbatore</p>
+                    <p class="meta time">3:00 pm 18/09/24</p>
+                    <span class="reply-button" onclick="reply(this)">Reply</span>
+                </div>
+                <div class="post">
+                    <p>Ensuring a high-quality, equitable public education system is a key priority for many citizens and policymakers. This complex challenge requires collaborative efforts between lawmakers, educators, parents, and community stakeholders to provide all children with an education that prepares them for success.</p>
+                    <p class="meta">Posted By: Admin</p>
+                    <p class="meta time">12:30 pm 19/09/24</p>
+                    <span class="reply-button" onclick="reply(this)">Reply</span>
+                </div>
+            </div>
+            <div class="post-query">
+                <input id="queryInput" placeholder="Post your queries , you can attach images also" type="text"/>
+                <label for="fileInput"><i class="fas fa-paperclip attachment"></i></label>
+                <input id="fileInput" type="file" accept="image/*"/>
+                <button onclick="postQuery()">Post</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function postQuery() {
+            var queryInput = document.getElementById('queryInput');
+            var queryText = queryInput.value;
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
+            var postsDiv = document.getElementById('posts');
+
+            if (queryText.trim() !== "" || file) {
+                var newPost = document.createElement('div');
+                newPost.className = 'post';
+
+                var postContent = '<p>' + queryText + '</p>';
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        postContent += '<img src="' + e.target.result + '" alt="User uploaded image"/>';
+                        newPost.innerHTML = postContent + '<p class="meta">Posted By: User</p><p class="meta time">' + new Date().toLocaleString() + '</p><span class="reply-button" onclick="reply(this)">Reply</span>';
+                        postsDiv.appendChild(newPost);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    newPost.innerHTML = postContent + '<p class="meta">Posted By: User</p><p class="meta time">' + new Date().toLocaleString() + '</p><span class="reply-button" onclick="reply(this)">Reply</span>';
+                    postsDiv.appendChild(newPost);
+                }
+
+                queryInput.value = "";
+                fileInput.value = "";
+            }
+        }
+
+        function reply(element) {
+            var replyInputDiv = document.createElement('div');
+            replyInputDiv.className = 'reply-input';
+
+            var replyInput = document.createElement('input');
+            replyInput.type = 'text';
+            replyInput.placeholder = 'Write a reply...';
+
+            var replyButton = document.createElement('button');
+            replyButton.innerText = 'Reply';
+            replyButton.onclick = function() {
+                var replyText = replyInput.value;
+                if (replyText.trim() !== "") {
+                    var replyDiv = document.createElement('div');
+                    replyDiv.className = 'post';
+                    replyDiv.innerHTML = '<p>' + replyText + '</p><p class="meta">Replied By: User</p><p class="meta time">' + new Date().toLocaleString() + '</p>';
+                    element.parentElement.appendChild(replyDiv);
+                    replyInputDiv.remove();
+                }
+            };
+
+            replyInputDiv.appendChild(replyInput);
+            replyInputDiv.appendChild(replyButton);
+            element.parentElement.appendChild(replyInputDiv);
+        }
+    </script>
+</body>
+</html>

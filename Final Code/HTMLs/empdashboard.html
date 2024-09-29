@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background: #2c3e50;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 250px;
+            margin-right: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #34495e;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex-grow: 1;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styles */
+        .header {
+            background: #2980b9;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .logout-button {
+            background: #e74c3c;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .logout-button:hover {
+            background: #c0392b;
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            display: none;
+        }
+
+        .notification.show {
+            display: block;
+        }
+
+        .notification ul {
+            list-style-type: none;
+            padding: 10px;
+        }
+
+        .notification ul li {
+            padding: 5px 0;
+        }
+
+        /* Discussion Section Styles */
+        .discussion-section,
+        .project-section {
+            margin-top: 20px;
+        }
+
+        .discussion-posts {
+            margin-top: 20px;
+        }
+
+        .post {
+            background: #ecf0f1;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .post img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #2980b9;
+            color: #ffffff;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        header {
+    /* background-color: var(--primary-color); */
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+    /* filter: brightness(0) invert(1); */
+}
+
+.logo h2 {
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    margin: 0;
+}
+
+.subheader {
+    color: #000000;
+    font-size: 0.9em;
+    margin-top: 5px;
+    text-align: left;
+}
+
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .user-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin: 0;
+                margin-bottom: 20px;
+            }
+
+            .main-content {
+                margin-top: 20px;
+            }
+
+            .post {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .post img {
+                margin: 0 0 10px 0;
+            }
+        }
+    </style>
+    
+    <script>
+        // JavaScript to handle notification functionality
+        function toggleNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.toggle('show');
+        }
+
+        // Close the notification if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.notification-button')) {
+                const notification = document.getElementById('notification');
+                notification.classList.remove('show');
+            }
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../asserts/emblem.png" alt="Urban Connect Logo">
+                <h2>Urban Connect</h2>
+            </div>
+        </div>
+        <div class="subheader">A government website for connecting government departments</div>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Options</h2>
+            <a href="../discussions/discussions.html">Discussion Forum</a>
+            <a class="notification-button" onclick="toggleNotification()">Notifications</a>
+            <a href="index.html">Logout</a>
+        </aside>
+        
+        <div class="main-content">
+            <header class="header">
+                <h1>Employee Dashboard</h1>
+                <div class="user-info">
+                    <p>Hello,</p>
+                    <div id="notification" class="notification">
+                        <ul>
+                            <li>Task assigned: Complete the quarterly report by Friday.</li>
+                            <li>Reminder: Team meeting at 2 PM today.</li>
+                            <li>Task completed: Congratulations on completing the project!</li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            
+            <section class="discussion-section">
+                <div class="discussion-posts">
+                    <div class="post">
+                        <img src="../asserts/city.png" alt="User Image">
+                        <p>Bridge construction was going well. This will be done within 2 months.</p>
+                    </div>
+                    <div class="post">
+                        <img src="../asserts/city3.png" alt="User Image">
+                        <p>Rotary Building was stopped because of shortage of resources.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="project-section">
+                <h2>Project Gallery</h2>
+                <div class="project-gallery" style="display: flex; flex-wrap: wrap; gap: 20px;">
+                    <div class="project">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.34M7OVC1YiZlyp6ffjUB5QHaFj%26pid%3DApi&f=1&ipt=4f1333e2874868fe11dae2807c2f7c984670ffff148edf481eb9d7ee68397316&ipo=images" alt="Project Image 1">
+                        <p>Project 1</p>
+                    </div>
+                    <div class="project">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.e7t2rsFLqmIZidAX6KwGHAHaFj%26pid%3DApi&f=1&ipt=bc3b8a454b56f8ee66211c53229c1e0c09a752d415656480884a5eb5f56fea4b&ipo=images" alt="Project Image 2">
+                        <p>Project 2</p>
+                    </div>
+                    <div class="project">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.LSUEFnL-gLEclEttvraf1QAAAA%26pid%3DApi&f=1&ipt=b7b808a5ae2ebd08904d685928400b6edbe65cab42807304faef822a84384932&ipo=images" alt="Project Image 3">
+                        <p>Project 3</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2023 Employee Dashboard</p>
+    </footer>
+</body>
+</html>

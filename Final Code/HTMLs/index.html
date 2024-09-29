@@ -1,0 +1,290 @@
+<html>
+<head>
+  <title>Urban Connect</title>
+  
+  <!-- React and Babel for future interaction -->
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+
+  <!-- Custom CSS (optional) -->
+  
+  <!-- Internal CSS for some customization -->
+  <style>
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .hero-banner {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?government,city') center/cover no-repeat;
+      background-image: url("../asserts/city2.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .dark .hero-banner {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('https://source.unsplash.com/1600x900/?government,city') center/cover no-repeat;
+      color: black;
+    }
+
+    .login-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-overlay .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 400px;
+    }
+
+    .close-btn {
+      cursor: pointer;
+      font-size: 50px;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: red;
+    }
+
+    /* Container for the scrolling gallery */
+    .scrolling-gallery {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll-left 30s linear infinite; /* Adjust time for smoother scroll */
+    }
+
+    /* Keyframes for the scrolling effect */
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(100%); /* Start from right off-screen */
+      }
+      100% {
+        transform: translateX(-100%); /* Move to left off-screen */
+      }
+    }
+
+    /* Styling for images */
+    .scrolling-gallery img {
+      height: 200px; /* Adjust height as needed */
+      margin: 0 10px; /* Space between images */
+    }
+    
+    .font-size-adjust {
+      cursor: pointer;
+      padding: 8px 12px;
+      border: none;
+      background-color: #4A90E2;
+      color: white;
+      border-radius: 5px;
+      margin-left: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .font-size-adjust:hover {
+      background-color: #357ABD;
+    }
+
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 transition-colors duration-300">
+
+  <!-- Header Section -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <img alt="Government Logo" src="../asserts/emblem.png" class="h-12 w-12 mr-4" />
+        <div>
+          <h1 class="text-2xl font-bold text-blue-600">Urban Connect</h1>
+          <p class="text-sm">An official platform for government department collaboration</p>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <button class="ml-4 bg-blue-600 text-white px-4 py-2 rounded" onclick="showOverlay()">Login</button>
+        <button id="darkModeToggle" class="ml-4 bg-gray-800 text-white px-4 py-2 rounded" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        <button class="font-size-adjust" onclick="adjustFontSize(1)">A+</button>
+        <button class="font-size-adjust" onclick="adjustFontSize(-1)">A-</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="bg-gray-200 py-4">
+    <div class="container mx-auto flex justify-center space-x-10">
+      <a href="#" class="hover:text-blue-500"><i class="fas fa-home"></i> Home</a>
+      <div class="relative group">
+        <a href="#" class="hover:text-blue-500">Departments <i class="fas fa-caret-down"></i></a>
+        <div class="absolute bg-white shadow-md hidden group-hover:block mt-1 p-2 space-y-2">
+          <a href="civil.html" class="block hover:text-blue-500">Civil</a>
+          <a href="Road&highways.html" class="block hover:text-blue-500">Road & Highways</a>
+          <a href="water.html" class="block hover:text-blue-500">Water</a>
+          <a href="gas.html" class="block hover:text-blue-500">Gas</a>
+          <a href="tele.html" class="block hover:text-blue-500">Telecommunication</a>
+          <a href="transport.html" class="block hover:text-blue-500">Transport</a>
+        </div>
+      </div>
+      <a href="#" class="hover:text-blue-500">About Us</a>
+      <a href="#" class="hover:text-blue-500">Contact</a>
+    </div>
+  </nav>
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div>
+      <h2 class="text-4xl font-bold">Connecting Government for a Better Tomorrow</h2>
+      <p class="mt-2 text-lg">Innovative solutions for efficient governance and public service delivery</p>
+    </div>
+  </section>
+
+
+  <!-- Main Content -->
+  <main class="container mx-auto mt-8 px-6">
+    <div class="flex space-x-8">
+      <!-- Image Section -->
+      <img src="../asserts/modi.jpg" alt="Government Officials" class="w-1/3 h-64 object-cover rounded-lg shadow-md" />
+      
+      <!-- Text Section -->
+      <div>
+        <h3 class="text-2xl font-bold">Press Conference Highlights</h3>
+        <p class="mt-2">Government officials frequently hold press conferences to announce new projects, policy changes, or collaborations aimed at improving public services.</p>
+        <p class="mt-2">Topics range from ongoing infrastructure projects like road construction to advancements in public services like digital platforms and blockchain for transparency.</p>
+        <p class="mt-2">Additionally, updates on social welfare initiatives such as healthcare and employment schemes are often discussed to provide better services to citizens.</p>
+      </div>
+    </div>
+
+    <!-- Latest News -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold">Latest News</h2>
+      <div class="overflow-hidden">
+        <div class="scrolling-gallery flex">
+          <img src="../asserts/city.png" alt="Project 1" class="h-48 w-auto mx-2" />
+          <img src="../asserts/flood3.png" alt="Project 2" class="h-48 w-auto mx-2" />
+          <img src="../asserts/housing3.png" alt="Project 3" class="h-48 w-auto mx-2" />
+          <img src="../asserts/railway3.png" alt="Project 4" class="h-48 w-auto mx-2" />
+          <img src="../asserts/water2.png" alt="Project 5" class="h-48 w-auto mx-2" />
+          <!-- Duplicate images for seamless effect -->
+          <img src="../asserts/city3.png" alt="Project 1" class="h-48 w-auto mx-2" />
+          <img src="../asserts/flood2.png" alt="Project 2" class="h-48 w-auto mx-2" />
+          <img src="../asserts/housing2.png" alt="Project 3" class="h-48 w-auto mx-2" />
+          <img src="../asserts/railway.png" alt="Project 4" class="h-48 w-auto mx-2" />
+          <img src="../asserts/water.png" alt="Project 5" class="h-48 w-auto mx-2" />
+          <!-- Duplicate images for seamless effect -->
+          <img src="../asserts/city.png" alt="Project 1" class="h-48 w-auto mx-2" />
+          <img src="../asserts/flood3.png" alt="Project 2" class="h-48 w-auto mx-2" />
+          <img src="../asserts/housing3.png" alt="Project 3" class="h-48 w-auto mx-2" />
+          <img src="../asserts/railway3.png" alt="Project 4" class="h-48 w-auto mx-2" />
+          <img src="../asserts/water2.png" alt="Project 5" class="h-48 w-auto mx-2" />
+          <!-- Duplicate images for seamless effect -->
+          <img src="../asserts/city3.png" alt="Project 1" class="h-48 w-auto mx-2" />
+          <img src="../asserts/flood2.png" alt="Project 2" class="h-48 w-auto mx-2" />
+          <img src="../asserts/housing2.png" alt="Project 3" class="h-48 w-auto mx-2" />
+          <img src="../asserts/railway.png" alt="Project 4" class="h-48 w-auto mx-2" />
+          <img src="../asserts/water.png" alt="Project 5" class="h-48 w-auto mx-2" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold">Quick Links</h2>
+      <ul class="list-disc ml-8 mt-2">
+        <li><a href="#" class="text-blue-500 hover:underline">Department of Civil Engineering</a></li>
+        <li><a href="#" class="text-blue-500 hover:underline">Road & Highway Ministry</a></li>
+        <li><a href="#" class="text-blue-500 hover:underline">Water Resource Management</a></li>
+        <li><a href="#" class="text-blue-500 hover:underline">Public Transport Services</a></li>
+      </ul>
+    </section>
+
+    <!-- About Us -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold">About Us</h2>
+      <p class="mt-2">Urban Connect is dedicated to fostering collaboration and communication between various government departments. Our mission is to streamline processes, enhance transparency, and improve public services through innovative solutions and technology.</p>
+      <p class="mt-2">Our team consists of experienced professionals committed to serving the community and ensuring efficient governance and public service delivery.</p>
+    </section>
+
+    <!-- Contact Us -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold">Contact Us</h2>
+      <p class="mt-2">If you have any questions, suggestions, or need support, please reach out through our contact form or visit one of our offices.</p>
+      <p><a href="#" class="text-blue-500 hover:underline">Contact Form</a> | <a href="#" class="text-blue-500 hover:underline">Office Locations</a> | <a href="#" class="text-blue-500 hover:underline">Support</a></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-200 py-6 text-center mt-12">
+    <p>&copy; 2023 Urban Connect. All rights reserved.</p>
+    <p><a href="#" class="text-blue-500 hover:underline">Privacy Policy</a> | <a href="#" class="text-blue-500 hover:underline">Terms of Service</a> | <a href="#" class="text-blue-500 hover:underline">Contact Us</a></p>
+  </footer>
+
+  <!-- Login Overlay -->
+  <div id="loginOverlay" class="login-overlay flex">
+    <div class="container bg-white rounded-lg p-8">
+      <div class="close-btn" onclick="hideOverlay()">X</div>
+      <h3 class="text-xl font-bold mb-4">Login Options</h3>
+      <div class="space-y-4">
+        <a href="deptlogin.html" class="block bg-blue-500 text-white py-2 px-4 rounded" style="text-decoration: none;color: black;">Department Login</a>
+        <a href="emplogin.html" class="block bg-blue-500 text-white py-2 px-4 rounded" style="text-decoration: none;color: black;">Employee Login</a>
+        <a href="#" class="block bg-blue-500 text-white py-2 px-4 rounded" style="text-decoration: none;color: black;">Agency Login</a>
+      </div>
+      <div class="mt-4">New user? <a href="#" class="text-blue-500 hover:underline">Sign in</a></div>
+    </div>
+  </div>
+
+  <script>
+    let currentFontSize = 16; // Default font size in pixels
+
+     // Show Login Overlay
+     function showOverlay() {
+      document.getElementById('loginOverlay').style.display = 'flex';
+    }
+
+    // Hide Login Overlay
+    function hideOverlay() {
+      document.getElementById('loginOverlay').style.display = 'none';
+    }
+
+    // Handle Login Form Submission
+    function handleLogin(event) {
+      event.preventDefault(); // Prevent form submission
+      // Here you can add your login logic, such as making an API call
+      alert('Login form submitted!'); // Placeholder alert
+      hideOverlay(); // Hide overlay after submission
+    }
+
+    function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle('dark');
+      const isDark = body.classList.contains('dark');
+      body.style.backgroundColor = isDark ? '#1a202c' : '#f7fafc'; // Tailwind's dark and light background colors
+      body.style.color = isDark ? '#cbd5e0' : '#4a5568'; // Text color for dark/light mode
+    }
+
+    function adjustFontSize(increment) {
+      currentFontSize += increment;
+      document.body.style.fontSize = currentFontSize + 'px';
+    }
+  </script>
+</body>
+</html>

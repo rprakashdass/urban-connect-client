@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transport Department Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #FFF9E9; /* Light Beige */
+    }
+    h1, h2, h5 {
+      font-family: 'Roboto', sans-serif;
+      color: #0055A5; /* Accent Text */
+      margin-bottom: 10px;
+    }
+    p, .card-text {
+      font-family: Arial, sans-serif;
+      color: #333333; /* Primary Text Color */
+    }
+    /* Fullscreen Layout */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .container-fluid {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    header {
+      background-color: #e9e8e8; /* Primary Color for headings */
+      color: #5c5c5c;
+      padding: 20px;
+      font-family: 'Roboto', sans-serif;
+    }
+    header h1 {
+      margin: 0;
+    }
+    a{
+  text-decoration: none;
+  color:black;
+}
+    main {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    footer {
+      background-color: #dbdbdb; /* Dark Footer */
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+    }
+    /* Card and Text Styling */
+    .card {
+      background-color: #eff5f9; /* Level 2 light color */
+      transition: transform 0.2s ease;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    .card-body {
+      padding: 20px;
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .card-text {
+      font-size: 14px;
+      color: #333333;
+    }
+    /* Make cards smaller and more compact */
+    .dashboard-section .card {
+      max-width: 250px;
+      margin: 10px;
+    }
+    .dashboard-section .card-body {
+      padding: 15px;
+    }
+    .dashboard-section .card-title {
+      font-size: 16px;
+    }
+    .dashboard-section .card-text {
+      font-size: 12px;
+    }
+    /* Alerts */
+    .alert {
+      background-color: #ebebeb; /* Alerts */
+      color: #333333; /* Text for contrast */
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    /* Buttons */
+    .btn-success {
+      background-color: #388E3C; /* Success Button */
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-success:hover {
+      background-color: #2f6d43;
+    }
+    /* Canvas */
+    canvas {
+      margin: 20px 0;
+      max-width: 500px;
+      max-height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <!-- Header -->
+    <header>
+      <h1>Transport Department Dashboard</h1>
+    </header>
+    <!-- Main Content -->
+    <main>
+      <!-- Department Summary -->
+      <div class="dashboard-section">
+        <h2>Department Summary</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="transport-total-users.html" onclick="trackClick('Total Users')">
+                    Total Users
+                  </a>
+                </h5>
+                <p class="card-text">50</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="transport-ongoing-projects.html" onclick="trackClick('Ongoing Projects')">
+                    Ongoing Projects
+                  </a>
+                </h5>
+                <p class="card-text">3</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="transport-completed-projects.html" onclick="trackClick('Completed Projects')">
+                    Completed Projects
+                  </a>
+                </h5>
+                <p class="card-text">3</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="../discussions/road&highways-issues.html" onclick="trackClick('Ongoing Projects')">
+                    Transport Department Discussions
+                  </a>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      <!-- Project Overview -->
+      <div class="dashboard-section">
+        <h2>Project Overview</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <canvas id="projectChart"></canvas>
+          </div>
+          <div class="col-md-6">
+            <div id="project-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Road Network Overview -->
+      <div class="dashboard-section">
+        <h2>Road Network Overview</h2>
+        <canvas id="roadNetworkChart"></canvas>
+        <div id="roadNetwork-list" class="row"></div>
+      </div>
+
+      <!-- Traffic Management Overview -->
+      <div class="dashboard-section">
+        <h2>Traffic Management Overview</h2>
+        <canvas id="trafficManagementChart"></canvas>
+        <div id="trafficManagement-list" class="row"></div>
+      </div>
+
+      <!-- Meeting Overview -->
+      <div class="dashboard-section">
+        <h2>Coordination and Collaboration</h2>
+        <div class="row" id="meeting-list"></div>
+      </div>
+
+      <!-- Training Overview -->
+      <div class="dashboard-section">
+        <h2>Capacity Building</h2>
+        <canvas id="trainingChart"></canvas>
+        <div id="training-list" class="row"></div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Transport Department Dashboard. All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Bootstrap and Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Project Management Chart
+      const projectChartCtx = document.getElementById('projectChart').getContext('2d');
+      new Chart(projectChartCtx, {
+        type: 'pie',
+        data: {
+          labels: ['Ongoing Projects', 'Completed Projects'],
+          datasets: [{
+            label: 'Project Stats',
+            data: [3, 5],
+            backgroundColor: ['#ff6384', '#36a2eb']
+          }]
+        }
+      });
+
+      // Projects List
+      const projects = [
+        { name: 'Project A', status: 'Ongoing' },
+        { name: 'Project B', status: 'Completed' },
+        { name: 'Project C', status: 'Ongoing' },
+        { name: 'Project D', status: 'Completed' },
+      ];
+
+      const projectList = document.getElementById('project-list');
+      projects.forEach(project => {
+        projectList.innerHTML += `<div class="alert">${project.name} - ${project.status}</div>`;
+      });
+
+      // Road Network Chart
+      const roadNetworkChartCtx = document.getElementById('roadNetworkChart').getContext('2d');
+      new Chart(roadNetworkChartCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Total Roads', 'National Highways', 'State Highways'],
+          datasets: [{
+            label: 'Road Network Stats',
+            data: [1000, 500, 200],
+            backgroundColor: ['#ffcd56', '#4bc0c0', '#9966ff']
+          }]
+        }
+      });
+
+      // Road Network List
+      const roadNetwork = [
+        { name: 'National Highway 1', length: '500 km' },
+        { name: 'State Highway 2', length: '200 km' },
+        { name: 'Local Road 3', length: '100 km' },
+      ];
+
+      const roadNetworkList = document.getElementById('roadNetwork-list');
+      roadNetwork.forEach(road => {
+        roadNetworkList.innerHTML += `<div class="col-md-6 alert alert-secondary">${road.name} - ${road.length}</div>`;
+      });
+
+      // Traffic Management Chart
+      const trafficManagementChartCtx = document.getElementById('trafficManagementChart').getContext('2d');
+      new Chart(trafficManagementChartCtx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+          datasets: [{
+            label: 'Traffic Management Stats',
+            data: [100, 120, 140, 160, 180],
+            backgroundColor: ['#ff6384']
+          }]
+        }
+      });
+
+      // Traffic Management List
+      const trafficManagement = [
+        { name: 'Traffic Signal 1', status: 'Functional' },
+        { name: 'Traffic Signal 2', status: 'Non-Functional' },
+        { name: 'Traffic Signal 3', status: 'Functional' },
+      ];
+
+      const trafficManagementList = document.getElementById('trafficManagement-list');
+      trafficManagement.forEach(signal => {
+        trafficManagementList.innerHTML += `<div class="col-md-6 alert alert-secondary">${signal.name} - ${signal.status}</div>`;
+      });
+
+      // Meeting Overview
+      const meetings = [
+        { name: 'Meeting A', date: '2024-02-15' },
+        { name: 'Meeting B', date: '2024-02-20' },
+        { name: 'Meeting C', date: '2024-02-25' },
+      ];
+
+      const meetingList = document.getElementById('meeting-list');
+      meetings.forEach(meeting => {
+        meetingList.innerHTML += `<div class="col-md-4 alert alert-secondary">${meeting.name} - ${meeting.date}</div>`;
+      });
+
+      // Training Overview
+      const trainingChartCtx = document.getElementById('trainingChart').getContext('2d');
+      new Chart(trainingChartCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+          datasets: [{
+            label: 'Training Stats',
+            data: [10, 15, 20, 25, 30],
+            backgroundColor: ['#ffcd56']
+          }]
+        }
+      });
+
+      // Training List
+      const trainings = [
+        { name: 'Training A', date: '2024-02-10' },
+        { name: 'Training B', date: '2024-02-15' },
+        { name: 'Training C', date: '2024-02-20' },
+      ];
+
+      const trainingList = document.getElementById('training-list');
+      trainings.forEach(training => {
+        trainingList.innerHTML += `<div class="col-md-6 alert alert-secondary">${training.name} - ${training.date}</div>`;
+      });
+    });
+  </script>
+</body>
+</html>

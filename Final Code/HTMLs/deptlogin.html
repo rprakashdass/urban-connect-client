@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Department Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    
+    .login-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: 0 auto;
+      margin-top: 50px;
+    }
+    
+    .login-container h2 {
+      margin-top: 0;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .form-group input[type="text"], .form-group input[type="password"], .form-group select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    .form-group button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+    
+    .form-group button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    
+    .flex {
+      display: flex;
+    }
+    
+    .items-center {
+      align-items: center;
+    }
+    header {
+    /* background-color: var(--primary-color); */
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+    /* filter: brightness(0) invert(1); */
+}
+
+.logo h2 {
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    margin: 0;
+}
+
+.subheader {
+    color: #000000;
+    font-size: 0.9em;
+    margin-top: 5px;
+    text-align: left;
+}
+
+  </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../asserts/emblem.png" alt="Urban Connect Logo">
+                <h2>Urban Connect</h2>
+            </div>
+        </div>
+        <div class="subheader">A government website for connecting government departments</div>
+    </header>
+  <div class="login-container">
+    <h2>Department Login</h2>
+    <form action="/login" method="post">
+      
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="department">Department:</label>
+        <select id="department" name="department" required>
+          <option value="">Select Department</option>
+          <option value="civil">Civil</option>
+          <option value="road-highways">Road & Highways</option>
+          <option value="water">Water</option>
+          <option value="transport">Transport</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+          <option value="">Select Role</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+  
+  <script>
+     const departmentSelect = document.getElementById('department');
+  const roleSelect = document.getElementById('role');
+  const form = document.querySelector('form');
+
+  departmentSelect.addEventListener('change', (e) => {
+    const department = e.target.value;
+    const roles = getRoles(department);
+    roleSelect.innerHTML = '';
+    roles.forEach((role) => {
+      const option = document.createElement('option');
+      option.value = role.value;
+      option.text = role.text;
+      roleSelect.appendChild(option);
+    });
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const department = departmentSelect.value;
+    const role = roleSelect.value;
+    const nextPage = getNextPage(department, role);
+    window.location.href = nextPage;
+  });
+    
+    function getRoles(department) {
+      switch (department) {
+        case 'civil':
+          return [
+            { value: 'engineer', text: 'Engineer' },
+            { value: 'architect', text: 'Architect' },
+            { value: 'contractor', text: 'Contractor' },
+          ];
+        case 'road-highways':
+          return [
+            { value: 'maintenance-supervisor', text: 'Maintenance Supervisor' },
+            { value: 'traffic-engineer', text: 'Traffic Engineer' },
+            { value: 'road-inspector', text: 'Road Inspector' },
+          ];
+        case 'water':
+          return [
+            { value: 'water-engineer', text: 'Water Engineer' },
+            { value: 'water-treatment-plant-operator', text: 'Water Treatment Plant Operator' },
+            { value: 'water-distribution-specialist', text: 'Water Distribution Specialist' },
+          ];
+        case 'gas':
+          return [
+            { value: 'gas-engineer', text: 'Gas Engineer' },
+            { value: 'gas-distribution-specialist', text: 'Gas Distribution Specialist' },
+            { value: 'gas-safety-inspector', text: 'Gas Safety Inspector' },
+          ];
+        case 'telecommunication':
+          return [
+            { value: 'telecom-engineer', text: 'Telecom Engineer' },
+            { value: 'network-administrator', text: 'Network Administrator' },
+            { value: 'telecom-technician', text: 'Telecom Technician' },
+          ];
+        case 'transport':
+          return [
+            { value: 'transport-manager', text: 'Transport Manager' },
+            { value: 'fleet-manager', text: 'Fleet Manager' },
+            { value: 'transport-coordinator', text: 'Transport Coordinator' },
+          ];
+        default:
+          return [];
+      }
+    }
+    function getNextPage(department, role) {
+    switch (department) {
+      case 'civil':
+        // switch (role) {
+        //   case 'engineer':
+        //     return 'civil_engineer.html';
+        //   case 'architect':
+        //     return 'civil_architect.html';
+        //   case 'contractor':
+        //     return 'civil_contractor.html';
+        // }
+        return "../Dashboard/CivilDepartment.html"
+        break;
+      case 'road-highways':
+        // switch (role) {
+        //   case 'maintenance-supervisor':
+        //     return 'road_highways_maintenance_supervisor.html';
+        //   case 'traffic-engineer':
+        //     return 'road_highways_traffic_engineer.html';
+        //   case 'road-inspector':
+        //     return 'road_highways_road_inspector.html';
+        // }
+        return "../Dashboard/Road&HighwaysDepartment.html"
+        break;
+        case 'water':
+        // switch (role) {
+        //   case 'water-engineer':
+        //     return 'water-engineer.html';
+        //   case 'water-treatment-plant-operator':
+        //     return 'water-treatment-plant-operator.html';
+        //   case 'water-distribution-specialist':
+        //     return 'water-distribution-specialist.html';
+        // }
+        return "../Dashboard/WaterDepartment.html"
+        break;
+        case 'gas':
+        switch (role) {
+          case 'gas-engineer':
+            return 'gas-engineer.html';
+          case 'gas-distribution-specialist':
+            return 'gas-distribution-specialist.html';
+          case 'gas-safety-inspector':
+            return 'gas-safety-inspector.html';
+        }
+        break;
+        case 'telecommunication':
+        switch (role) {
+          case 'telecom-engineer':
+            return 'telecom-engineer.html';
+          case 'network-administrator':
+            return 'network-administrator.html';
+          case 'telecom-technician':
+            return 'telecom-technician.html';
+        }
+        break;
+        case 'transport':
+        // switch (role) {
+        //   case 'transport-manager':
+        //     return 'transport-manager.html';
+        //   case 'fleet-manager':
+        //     return 'fleet-manager.html';
+        //   case 'transport-coordinator':
+        //     return 'transport-coordinator.html';
+        // }
+        // break;
+        return "../Dashboard/TransportDepartment.html"
+    }
+  }
+  </script>
+</body>
+</html>

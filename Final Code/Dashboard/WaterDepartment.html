@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Department Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #FFF9E9; /* Light Beige */
+    }
+    h1, h2, h5 {
+      font-family: 'Roboto', sans-serif;
+      color: #0055A5; /* Accent Text */
+      margin-bottom: 10px;
+    }
+    p, .card-text {
+      font-family: Arial, sans-serif;
+      color: #333333; /* Primary Text Color */
+    }
+    /* Fullscreen Layout */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .container-fluid {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    header {
+      background-color: #e9e8e8; /* Primary Color for headings */
+      color: #5c5c5c;
+      padding: 20px;
+      font-family: 'Roboto', sans-serif;
+    }
+    header h1 {
+      margin: 0;
+    }
+    a{
+  text-decoration: none;
+  color:black;
+}
+    main {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    footer {
+      background-color: #dbdbdb; /* Dark Footer */
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+    }
+    /* Card and Text Styling */
+    .card {
+      background-color: #eff5f9; /* Level 2 light color */
+      transition: transform 0.2s ease;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    .card-body {
+      padding: 20px;
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .card-text {
+      font-size: 14px;
+      color: #333333;
+    }
+    /* Make cards smaller and more compact */
+    .dashboard-section .card {
+      max-width: 250px;
+      margin: 10px;
+    }
+    .dashboard-section .card-body {
+      padding: 15px;
+    }
+    .dashboard-section .card-title {
+      font-size: 16px;
+    }
+    .dashboard-section .card-text {
+      font-size: 12px;
+    }
+    /* Alerts */
+    .alert {
+      background-color: #ebebeb; /* Alerts */
+      color: #333333; /* Text for contrast */
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    /* Buttons */
+    .btn-success {
+      background-color: #388E3C; /* Success Button */
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-success:hover {
+      background-color: #2f6d43;
+    }
+    /* Canvas */
+    canvas {
+      margin: 20px 0;
+      max-width: 500px;
+      max-height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <!-- Header -->
+    <header>
+      <h1>Water Department Dashboard</h1>
+    </header>
+    <!-- Main Content -->
+    <main>
+      <!-- Department Summary -->
+      <div class="dashboard-section">
+        <h2>Department Summary</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                    <a href="water-total-users.html" onclick="trackClick('Total Users')">
+                        Total Users
+                      </a>
+                    </h5>
+                    <p class="card-text">50</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <a href="water-ongoing-projects.html" onclick="trackClick('Ongoing Projects')">
+                        Ongoing Projects
+                      </a>
+                    </h5>
+                    <p class="card-text">3</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <a href="water-completed-projects.html" onclick="trackClick('Completed Projects')">
+                        Completed Projects
+                      </a>
+                    </h5>
+                    <p class="card-text">3</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <a href="../discussions/water-issues.html" onclick="trackClick('Ongoing Projects')">
+                        Water Department Discussions
+                      </a>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+    
+          <!-- Water Supply Overview -->
+          <div class="dashboard-section">
+            <h2>Water Supply Overview</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <canvas id="waterSupplyChart"></canvas>
+              </div>
+              <div class="col-md-6">
+                <div id="waterSupply-list"></div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Water Treatment Overview -->
+          <div class="dashboard-section">
+            <h2>Water Treatment Overview</h2>
+            <canvas id="waterTreatmentChart"></canvas>
+            <div id="waterTreatment-list" class="row"></div>
+          </div>
+    
+          <!-- Water Distribution Overview -->
+          <div class="dashboard-section">
+            <h2>Water Distribution Overview</h2>
+            <canvas id="waterDistributionChart"></canvas>
+            <div id="waterDistribution-list" class="row"></div>
+          </div>
+    
+          <!-- Water Quality Overview -->
+          <div class="dashboard-section">
+            <h2>Water Quality Overview</h2>
+            <canvas id="waterQualityChart"></canvas>
+            <div id="waterQuality-list" class="row"></div>
+          </div>
+    
+          <!-- Meeting Overview -->
+          <div class="dashboard-section">
+            <h2>Meetings and Events</h2>
+            <div class="row" id="meeting-list"></div>
+          </div>
+    
+          <!-- Training Overview -->
+          <div class="dashboard-section">
+            <h2>Training and Capacity Building</h2>
+            <canvas id="trainingChart"></canvas>
+            <div id="training-list" class="row"></div>
+          </div>
+        </main>
+    
+        <!-- Footer -->
+        <footer>
+          <p>&copy; 2024 Water Department Dashboard. All Rights Reserved.</p>
+        </footer>
+      </div>
+    
+      <!-- Bootstrap and Chart.js -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          // Water Supply Chart
+          const waterSupplyChartCtx = document.getElementById('waterSupplyChart').getContext('2d');
+          new Chart(waterSupplyChartCtx, {
+            type: 'pie',
+            data: {
+              labels: ['Water Supply', 'Water Demand'],
+              datasets: [{
+                label: 'Water Supply Stats',
+                data: [80, 20],
+                backgroundColor: ['#ff6384', '#36a2eb']
+              }]
+            }
+          });
+    
+          // Water Supply List
+          const waterSupply = [
+            { name: 'Water Supply 1', status: 'Functional' },
+            { name: 'Water Supply 2', status: 'Non-Functional' },
+            { name: 'Water Supply 3', status: 'Functional' },
+          ];
+    
+          const waterSupplyList = document.getElementById('waterSupply-list');
+          waterSupply.forEach(supply => {
+            waterSupplyList.innerHTML += `<div class="alert">${supply.name} - ${supply.status}</div>`;
+          });
+    
+          // Water Treatment Chart
+          const waterTreatmentChartCtx = document.getElementById('waterTreatmentChart').getContext('2d');
+          new Chart(waterTreatmentChartCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Water Treatment Plant 1', 'Water Treatment Plant 2', 'Water Treatment Plant 3'],
+              datasets: [{
+                label: 'Water Treatment Stats',
+                data: [100, 80, 60],
+                backgroundColor: ['# ff6384', '#36a2eb', '#ffce56']
+              }]
+            }
+          });
+    
+          // Water Treatment List
+          const waterTreatment = [
+            { name: 'Water Treatment Plant 1', status: 'Functional' },
+            { name: 'Water Treatment Plant 2', status: 'Non-Functional' },
+            { name: 'Water Treatment Plant 3', status: 'Functional' },
+          ];
+    
+          const waterTreatmentList = document.getElementById('waterTreatment-list');
+          waterTreatment.forEach(treatment => {
+            waterTreatmentList.innerHTML += `<div class="alert">${treatment.name} - ${treatment.status}</div>`;
+          });
+    
+          // Water Distribution Chart
+          const waterDistributionChartCtx = document.getElementById('waterDistributionChart').getContext('2d');
+          new Chart(waterDistributionChartCtx, {
+            type: 'line',
+            data: {
+              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+              datasets: [{
+                label: 'Water Distribution Stats',
+                data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
+                backgroundColor: ['#ff6384']
+              }]
+            }
+          });
+    
+          // Water Distribution List
+          const waterDistribution = [
+            { name: 'Water Distribution 1', status: 'Functional' },
+            { name: 'Water Distribution 2', status: 'Non-Functional' },
+            { name: 'Water Distribution 3', status: 'Functional' },
+          ];
+    
+          const waterDistributionList = document.getElementById('waterDistribution-list');
+          waterDistribution.forEach(distribution => {
+            waterDistributionList.innerHTML += `<div class="alert">${distribution.name} - ${distribution.status}</div>`;
+          });
+    
+          // Water Quality Chart
+          const waterQualityChartCtx = document.getElementById('waterQualityChart').getContext('2d');
+          new Chart(waterQualityChartCtx, {
+            type: 'radar',
+            data: {
+              labels: ['pH', 'Turbidity', 'Chlorine', 'Fluoride', 'Nitrate'],
+              datasets: [{
+                label: 'Water Quality Stats',
+                data: [80, 70, 60, 50, 40],
+                backgroundColor: ['#ff6384']
+              }]
+            }
+          });
+    
+          // Water Quality List
+          const waterQuality = [
+            { name: 'Water Quality 1', status: 'Good' },
+            { name: 'Water Quality 2', status: 'Bad' },
+            { name: 'Water Quality 3', status: 'Good' },
+          ];
+    
+          const waterQualityList = document.getElementById('waterQuality-list');
+          waterQuality.forEach(quality => {
+            waterQualityList.innerHTML += `<div class="alert">${quality.name} - ${quality.status}</div>`;
+          });
+    
+          // Meeting List
+          const meetings = [
+            { name: 'Meeting 1', date: '2024-01-01' },
+            { name: 'Meeting 2', date: '2024-01-15' },
+            { name: 'Meeting 3', date: '2024-02-01' },
+          ];
+    
+          const meetingList = document.getElementById('meeting-list');
+          meetings.forEach(meeting => {
+            meetingList.innerHTML += `<div class="alert">${meeting.name} - ${meeting.date}</div>`;
+          });
+    
+          // Training Chart
+          const trainingChartCtx = document.getElementById('trainingChart').getContext('2d');
+          new Chart(trainingChartCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Training 1', 'Training 2', 'Training 3'],
+              datasets: [{
+                label: 'Training Stats',
+                data: [100, 80, 60],
+                backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
+              }]
+            }
+          });
+    
+          // Training List
+          const training = [
+            { name: 'Training 1', status: 'Completed' },
+            { name: 'Training 2', status: 'Ongoing' },
+            { name: 'Training 3', status: 'Upcoming' },
+          ];
+    
+          const trainingList = document.getElementById('training-list');
+          training.forEach(train => {
+            trainingList.innerHTML += `<div class="alert">${train.name} - ${train.status}</div>`;
+          });
+        });
+      </script>
+    </body>
+    </html>

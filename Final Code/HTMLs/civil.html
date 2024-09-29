@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Connect - Civil Projects</title>
+    <link rel="stylesheet" href="../CSS/civil.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../asserts/emblem.png" alt="Urban Connect Logo">
+                <h2>Urban Connect</h2>
+            </div>
+            <nav>
+                <div class="menu-icon" onclick="toggleSidebar()">&#9776;</div>
+            </nav>
+        </div>
+        <div class="subheader">A government website for connecting government departments</div>
+    </header>
+    
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="closeSidebar()">&times;</div>
+        <div class="sidebar-content">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="../discussions/discussions.html">Discussions</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+        <button class="login-btn"onclick="showOverlay()">Log In</button>
+    </div>
+    <div class="overlay" id="loginOverlay">
+        <div class="container">
+            <div class="close-btn" onclick="hideOverlay()">X</div>
+            <div class="login-option">
+                <a href="deptlogin.html" style="text-decoration: none;color: black;"><p>Department Login</p></a>
+                <img src="../asserts/icons8-department-50.png" alt="Icon representing department login">
+            </div>
+            <div class="login-option">
+              <a href="emplogin.html" style="text-decoration: none;color: black;"><p>Employee Login</p></a>
+                <img src="../asserts/icons8-employee-50.png" alt="Icon representing employee login">
+            </div>
+            <div class="login-option">
+              <a href="agencylogin.html"style="text-decoration: none;color: black;"><p>Agency Login</p></a>
+                <img src="../asserts/icons8-agency-50.png" alt="Icon representing agency login">
+            </div>
+            <div class="new-user">
+                New user ? <a href="#">Sign in</a>
+            </div>
+        </div>
+    </div>
+    <main id="main-content">
+        <h1>Civil Projects</h1>
+        <div class="project">
+          <h2>City Center Revitalization</h2>
+          <p>A transformative project aimed at breathing new life into our urban core, enhancing public spaces and promoting sustainable development.</p>
+          <ul>
+            <li>Renovation of 5 major public spaces</li>
+            <li>Implementation of green infrastructure</li>
+            <li>Location: Downtown Metropolitan Area</li>
+            <li>Duration: 18 months</li>
+            <li>Budget: $25 million allocated</li>
+            <li>Created 200+ temporary jobs</li>
+          </ul>
+          <div class="project-images">
+            <img src="../asserts/city.png" alt="City Center Before">
+            <img src="../asserts/city2.png" alt="City Center After">
+            <img src="../asserts/city3.png" alt="Green Infrastructure">
+          </div>
+        </div>
+        <div class="project">
+          <h2>Sustainable Housing Development</h2>
+          <p>An innovative residential project focusing on energy efficiency and renewable energy, setting new standards for sustainable living.</p>
+          <ul>
+            <li>Construction of 500 energy-efficient homes</li>
+            <li>Integration of renewable energy systems</li>
+            <li>Location: Suburban Expansion Zone</li>
+            <li>Duration: 24 months</li>
+            <li>Budget: $75 million allocated</li>
+            <li>Reduced carbon footprint by 30%</li>
+          </ul>
+          <div class="project-images">
+            <img src="../asserts/housing.png" alt="Housing Development Overview">
+            <img src="../asserts/housing2.png" alt="Solar Panel Installation">
+            <img src="../asserts/housing3.png" alt="Energy-Efficient Home Interior">
+          </div>
+        </div>
+      </main>
+    <div class="chat-icon" id="chat-icon">
+        <img src="../asserts/icons8-chat-message-50.png" alt="Chat Icon">
+      </div>
+      <div class="chat-box">
+        <div class="chat-header">
+          <span class="close-chat-btn ">&times;</span>
+          Chat
+        </div>
+        <div class="chat-messages">
+          <!-- messages will be displayed here -->
+        </div>
+        <div class="chat-input">
+          <input type="text" id="chat-input-field" placeholder="Type a message...">
+          <button id="send-btn">Send</button>
+        </div>
+      </div>
+    <script>
+       const chatIcon = document.getElementById('chat-icon');
+const chatWindow = document.querySelector('.chat-box');
+const closeChatBtn = document.querySelector('.close-chat-btn');
+const sendBtn = document.getElementById('send-btn');
+const chatInputField = document.getElementById('chat-input-field');
+const chatMessagesDiv = document.querySelector('.chat-messages');
+
+chatIcon.addEventListener('click', () => {
+  chatWindow.classList.toggle('open');
+});
+
+closeChatBtn.addEventListener('click', () => {
+  chatWindow.classList.remove('open');
+});
+
+sendBtn.addEventListener('click', () => {
+  const message = chatInputField.value.trim();
+  if (message !== '') {
+    const messageHTML = `<div class="chat-message">${message}</div>`;
+    chatMessagesDiv.innerHTML += messageHTML;
+    chatInputField.value = '';
+    // Scroll to the bottom of the chat box
+    chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
+  }
+});
+
+        function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('main-content');
+    const loginOverlay = document.getElementById('loginOverlay');
+    if (loginOverlay.style.display === 'flex') {
+        return;
+    }
+    sidebar.classList.toggle('open');
+    if (sidebar.classList.contains('open')) {
+        mainContent.style.marginRight = '250px';
+    } else {
+        mainContent.style.marginRight = '0';
+    }
+}
+
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('main-content');
+    const loginOverlay = document.getElementById('loginOverlay');
+    if (loginOverlay.style.display === 'flex') {
+        return;
+    }
+    sidebar.classList.remove('open');
+    mainContent.style.marginRight = '0';
+}
+
+function showOverlay() {
+    const loginOverlay = document.getElementById('loginOverlay');
+    const sidebar = document.getElementById('sidebar');
+    const projectDiv = document.getElementById('main-content');
+    loginOverlay.style.display = 'flex';
+    sidebar.classList.remove('open');
+    projectDiv.style.pointerEvents = 'none';
+    document.getElementById('main-content').style.marginRight = '0';
+}
+
+function hideOverlay() {
+    const loginOverlay = document.getElementById('loginOverlay');
+    const projectDiv = document.getElementById('main-content');
+    loginOverlay.style.display = 'none';
+    projectDiv.style.pointerEvents = 'auto';
+}
+    </script>
+    
+</body>
+</html>

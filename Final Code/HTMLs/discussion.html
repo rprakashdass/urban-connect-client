@@ -1,0 +1,68 @@
+<html>
+<head>
+  <title>Urban Connect Discussion</title>
+  <link rel="stylesheet" href="../CSS/discussion.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <div class="container mx-auto">
+    <div class="header">
+      <img alt="Government Logo" src="../asserts/emblem.png" width="50" height="50"/>
+      <h1 class="font-bold">Urban Connect Discussion</h1>
+      <p class="text-sm">A platform for citizens to raise their concerns and queries</p>
+    </div>
+    <div class="discussion-container">
+      <h2 class="font-bold">Recent Posts</h2>
+      <ul id="post-list">
+        <!-- Posts will be displayed here -->
+      </ul>
+    </div>
+    <div class="new-post">
+      <h2 class="font-bold">Post Your Query or Issue</h2>
+      <form>
+        <input type="text" placeholder="Title" class="form-input" id="post-title">
+        <textarea placeholder="Description" class="form-textarea" id="post-description"></textarea>
+        <button class="btn btn-primary" id="post-btn">Post</button>
+      </form>
+    </div>
+  </div>
+  <footer class="mt-8 py-4 bg-gray-200 text-center">
+    <p>&copy; 2023 Urban Connect. All rights reserved.</p>
+    <p>
+      <a class="text-blue-500 hover:underline" href="#">Privacy Policy</a>
+      |
+      <a class="text-blue-500 hover:underline" href="#">Terms of Service</a>
+      |
+      <a class="text-blue-500 hover:underline" href="#">Contact Us</a>
+    </p>
+  </footer>
+  <script >
+    // Get the post list element
+const postList = document.getElementById('post-list');
+
+// Add event listener to post button
+document.getElementById('post-btn').addEventListener('click', function(event) {
+  event.preventDefault();
+  // Get post title and description
+  const postTitle = document.getElementById('post-title').value;
+  const postDescription = document.getElementById('post-description').value;
+  // Create a new list item
+  const listItem = document.createElement('li');
+  listItem.innerHTML = `
+    <h3>${postTitle}</h3>
+    <p>Posted by: ${userName}</p>
+    <p>${postDescription}</p>
+    <button class="btn btn-primary">Reply</button>
+  `;
+  // Add the list item to the post list
+  postList.appendChild(listItem);
+  // Clear post title and description inputs
+  document.getElementById('post-title').value = '';
+  document.getElementById('post-description').value = '';
+});
+
+// Assume user name is stored in a variable
+const userName = 'John Doe';
+  </script>
+</body>
+</html>

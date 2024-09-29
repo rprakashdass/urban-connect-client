@@ -1,0 +1,41 @@
+Dashboard Overview
+
+The dashboard should provide a comprehensive view of the platform's key functionalities and data, catering to both the administrative and end-user needs.
+
+Admin View
+
+Department Management
+List of registered departments and their details
+Ability to add, edit, and remove departments
+User management (employees, officers, technical experts) within each department
+Project Management
+Overview of all ongoing and upcoming projects
+Ability to create new projects and assign them as "Inter-departmental"
+Project details including location, participating departments, project status, and timeline
+Resource Sharing
+Inventory of available resources (technical expertise, machinery, technology, etc.) across departments
+Ability to view, request, and allocate resources between departments
+Coordination and Collaboration
+Calendar view of scheduled tasks, meetings, and project milestones
+Ability to organize and manage interdepartmental meetings
+Project phasing and execution tracking
+Capacity Building
+List of training programs, workshops, and seminars
+Ability to create, schedule, and manage capacity-building activities
+Discussion Forum
+Access to different forum sections (Intra-department, Inter-department, and Public)
+Ability to create, manage, and moderate discussions
+End-user View
+
+My Projects
+List of projects the user is involved in, either as a lead or a participant
+Ability to view project details, tasks, and progress
+Resource Requests
+Ability to view available resources and submit requests for resource allocation
+Collaboration Tools
+Access to project-specific collaboration features, such as task scheduling, progress reporting, and meeting organization
+Capacity Building
+View and register for training programs, workshops, and seminars
+Discussion Forum
+Access to relevant discussion forums based on the user's department and project involvement
+Ability to participate in discussions and share knowledge

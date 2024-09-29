@@ -1,0 +1,82 @@
+<html></html>
+<head>
+    <title>Urban Connect</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="employee_discussions.css">
+    <!-- <link rel="stylesheet" href="/front_end/src/Files/CSS/employee_discussions.css"> -->
+
+</head>
+<body>
+    <div class="header">
+        <img alt="Government Emblem" height="80" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.8elmfZNQyVftbH8_j59DPgHaHa%26pid%3DApi&f=1&ipt=e424492c4f701e404aca5a6564ec4b22970996dbb816ad74822b2716620e938e&ipo=images" width="80"/>
+        <div>
+            <h1>Urban Connect</h1>
+            <p>An government website for connecting government departments</p>
+        </div>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <h2>Search Channels</h2>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search channels...">
+                <button onclick="applyFilter()">Apply</button>
+            </div>
+        </div>
+        <div class="main-content">
+            <h2>Road & Highways Department</h2>
+            <div class="filter-buttons">
+                <button onclick="filterChannels('all')">All</button>
+                <button onclick="filterChannels('Inter Department')">Inter Department</button>
+                <button onclick="filterChannels('Intra Department')">Intra Department</button>
+                <button onclick="filterChannels('Public')">Public</button>
+            </div>
+            <div id="channels">
+                <div class="channel" data-category="Public">
+                    <h3>Road&Highways issues</h3>
+                    <p><strong>Description:</strong></p>
+                    <p>Improving the quality and equity of the public education system, including debates around school funding, teacher pay, curriculum standards, and college affordability.</p>
+                    <p><strong>Category :</strong> Public</p>
+                </div>
+                <div class="channel" data-category="Intra Department">
+                    <h3>Highway Project</h3>
+                    <p><strong>Description:</strong></p>
+                    <p>Highway project was ongoing on the coimbatore central area so the post your updates in this discussion to know the progress of the project</p>
+                    <p><strong>Category :</strong> Intra Department</p>
+                </div>
+                <div class="channel" data-category="Inter Department">
+                    <h3>Tech Park - Kovai</h3>
+                    <p><strong>Description:</strong></p>
+                    <p>Improving the quality and equity of the public education system, including debates around school funding, teacher pay, curriculum standards, and college affordability.</p>
+                    <p><strong>Category :</strong> Inter Department</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function filterChannels(category) {
+            const channels = document.querySelectorAll('.channel');
+            channels.forEach(channel => {
+                if (category === 'all' || channel.getAttribute('data-category') === category) {
+                    channel.style.display = 'block';
+                } else {
+                    channel.style.display = 'none';
+                }
+            });
+        }
+
+        function applyFilter() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const channels = document.querySelectorAll('.channel');
+            channels.forEach(channel => {
+                const channelName = channel.querySelector('h3').textContent.toLowerCase();
+                if (channelName.includes(searchInput)) {
+                    channel.style.display = 'block';
+                } else {
+                    channel.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

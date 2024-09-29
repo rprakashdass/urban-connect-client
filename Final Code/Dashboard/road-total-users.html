@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Department Users - Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <!-- Header -->
+    <header>
+      <h1>Road&Highways Department Users List</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Add a search bar above the table -->
+<input type="search" id="search-input" placeholder="Search by name or email">
+
+<!-- Add a dropdown menu for filtering by role -->
+<select id="filter-role">
+  <option value="">All Roles</option>
+  <option value="Admin">Admin</option>
+  <option value="Manager">Manager</option>
+  <option value="User">User</option>
+</select>
+
+<!-- Add a dropdown menu for sorting by column -->
+<select id="sort-by">
+  <option value="">Sort by</option>
+  <option value="username">Username</option>
+  <option value="email">Email</option>
+  <option value="firstName">First Name</option>
+  <option value="lastName">Last Name</option>
+  <option value="role">Role</option>
+</select>
+
+<!-- Add a button to toggle ascending/descending sort order -->
+<button id="sort-order">Ascending</button>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody id="user-list">
+              <!-- User list will be rendered here -->
+              <tr>
+                <td>johnDoe</td>
+                <td>johndoe@example.com</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>janeSmith</td>
+                <td>janesmith@example.com</td>
+                <td>Jane</td>
+                <td>Smith</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>bobJohnson</td>
+                <td>bobjohnson@example.com</td>
+                <td>Bob</td>
+                <td>Johnson</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>aliceWilliams</td>
+                <td>alicewilliams@example.com</td>
+                <td>Alice</td>
+                <td>Williams</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>markDavis</td>
+                <td>markdavis@example.com</td>
+                <td>Mark</td>
+                <td>Davis</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>emilyTaylor</td>
+                <td>emilytaylor@example.com</td>
+                <td>Emily</td>
+                <td>Taylor</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>patrickBrown</td>
+                <td>patrickbrown@example.com</td>
+                <td>Patrick</td>
+                <td>Brown</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>sarahLee</td>
+                <td>sarahlee@example.com</td>
+                <td>Sarah</td>
+                <td>Lee</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>kevinWhite</td>
+                <td>kevinwhite@example.com</td>
+                <td>Kevin</td>
+                <td>White</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>lisaHall</td>
+                <td>lisahall@example.com</td>
+                <td>Lisa</td>
+                <td>Hall</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>matthewMartin</td>
+                <td>matthewmartin@example.com</td>
+                <td>Matthew</td>
+                <td>Martin</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>amyWalker</td>
+                <td>amywalker@example.com</td>
+                <td>Amy</td>
+                <td>Walker</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>christopherLewis</td>
+                <td>christopherlewis@example.com</td>
+                <td>Christopher</td>
+                <td>Lewis</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>nicoleHarris</td>
+                <td>nicoleharris@example.com</td>
+                <td>Nicole</td>
+                <td>Harris</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>anthonyGarcia</td>
+                <td>anthonygarcia@example.com</ td>
+                <td>Anthony</td>
+                <td>Garcia</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>oliviaWright</td>
+                <td>oliviawright@example.com</td>
+                <td>Olivia</td>
+                <td>Wright</td>
+                <td> Admin</td>
+              </tr>
+              <tr>
+                <td>jessicaParker</td>
+                <td>jessicaparker@example.com</td>
+                <td>Jessica</td>
+                <td>Parker</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>andrewDavis</td>
+                <td>andrewdavis@example.com</td>
+                <td>Andrew</td>
+                <td>Davis</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>samanthaMiller</td>
+                <td>samanthamiller@example.com</td>
+                <td>Samantha</td>
+                <td>Miller</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>brianMoore</td>
+                <td>brianmoore@example.com</td>
+                <td>Brian</td>
+                <td>Moore</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>laurenTaylor</td>
+                <td>laurentaylor@example.com</td>
+                <td>Lauren</td>
+                <td>Taylor</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>justinHall</td>
+                <td>justinhall@example.com</td>
+                <td>Justin</td>
+                <td>Hall</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>abigailWalker</td>
+                <td>abigailwalker@example.com</td>
+                <td>Abigail</td>
+                <td>Walker</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>ryanLewis</td>
+                <td>ryanlewis@example.com</td>
+                <td>Ryan</td>
+                <td>Lewis</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>hannahHarris</td>
+                <td>hannahharris@example.com</td>
+                <td>Hannah</td>
+                <td>Harris</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>ericGarcia</td>
+                <td>ericgarcia@example.com</td>
+                <td>Eric</td>
+                <td>Garcia</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>melissaWright</td>
+                <td>melissawright@example.com</td>
+                <td>Melissa</td>
+                <td>Wright</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>benjaminParker</td>
+                <td>benjaminparker@example.com</td>
+                <td>Benjamin</td>
+                <td>Parker</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>alexanderDavis</td>
+                <td>alexanderdavis@example.com</td>
+                <td>Alexander</td>
+                <td>Davis</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>isabellaMiller</td>
+                <td>isabellamiller@example.com</td>
+                <td>Isabella</td>
+                <td>Miller</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>julianMoore</td>
+                <td>julianmoore@example.com</td>
+                <td>Julian</td>
+                <td>Moore</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>gabriellaTaylor</td>
+                <td>gabriellataylor@example.com</td>
+                <td>Gabriella</td>
+                <td>Taylor</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>loganHall</td>
+                <td>loganhall@example.com</td>
+                <td>Logan</td>
+                <td>Hall</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>averyWalker</td>
+                <td>averywalker@example.com</td>
+                <td>Avery</td>
+                <td>Walker</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>lucasLewis</td>
+                <td >lucaslewis@example.com</td>
+                <td>Lucas</td>
+                <td>Lewis</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>miaHarris</td>
+                <td>miaharris@example.com</td>
+                <td>Mia</td>
+                <td>Harris</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>ethanGarcia</td>
+                <td>ethangarcia@example.com</td>
+                <td>Ethan</td>
+                <td>Garcia</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>sofiaWright</td>
+                <td>sofiawright@example.com</td>
+                <td>Sofia</td>
+                <td>Wright</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>williamParker</td>
+                <td>williamparker@example.com</td>
+                <td>William</td>
+                <td>Parker</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>oliverDavis</td>
+                <td>oliverdavis@example.com</td>
+                <td>Oliver</td>
+                <td>Davis</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>avaMiller</td>
+                <td>avamiller@example.com</td>
+                <td>Ava</td>
+                <td>Miller</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>jacksonMoore</td>
+                <td>jacksonmoore@example.com</td>
+                <td>Jackson</td>
+                <td>Moore</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>liaTaylor</td>
+                <td>liataylor@example.com</td>
+                <td>Lia</td>
+                <td>Taylor</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>camilaHall</td>
+                <td>camilahall@example.com</td>
+                <td>Camila</td>
+                <td>Hall</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>gabrielWalker</td>
+                <td>gabrielwalker@example.com</td>
+                <td>Gabriel</td>
+                <td>Walker</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>julianaLewis</td>
+                <td>julianalewis@example.com</td>
+                <td>Juliana</td>
+                <td>Lewis</td>
+                <td>Admin</td>
+              </tr>
+              <tr>
+                <td>alexHarris</td>
+                <td>alexharris@example.com</td>
+                <td>Alex</td>
+                <td>Harris</td>
+                <td>User</td>
+              </tr>
+              <tr>
+                <td>mayraGarcia</td>
+                <td>mayragarcia@example.com</td>
+                <td>Mayra</td>
+                <td>Garcia</td>
+                <td>Manager</td>
+              </tr>
+              <tr>
+                <td>danielWright</td>
+                <td>danielwright@example.com</td>
+                <td>Daniel</td>
+                <td>Wright</td>
+                <td>Admin</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!-- JavaScript code to implement the search, filter, and sort functionality -->
+<script>
+  const tableBody = document.getElementById('user-list');
+  const searchInput = document.getElementById('search-input');
+  const filterRole = document.getElementById('filter-role');
+  const sortBy = document.getElementById('sort-by');
+  const sortOrderButton = document.getElementById('sort-order');
+
+  // Search functionality
+  searchInput.addEventListener('input', () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    const rows = tableBody.rows;
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      const username = row.cells[0].textContent.toLowerCase();
+      const email = row.cells[1].textContent.toLowerCase();
+      if (username.includes(searchTerm) || email.includes(searchTerm)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    }
+  });
+
+  // Filter functionality
+  filterRole.addEventListener('change', () => {
+    const selectedRole = filterRole.value;
+    const rows = tableBody.rows;
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      const role = row.cells[4].textContent;
+      if (selectedRole === '' || role === selectedRole) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    }
+  });
+
+  // Sort functionality
+sortBy.addEventListener('change', () => {
+  const sortByColumn = sortBy.value;
+  const sortOrder = sortOrderButton.textContent === 'Ascending' ? 'asc' : 'desc';
+  const rows = Array.from(tableBody.rows);
+  rows.sort((a, b) => {
+    let aValue, bValue;
+    switch (sortByColumn) {
+      case 'username':
+        aValue = a.cells[0].textContent;
+        bValue = b.cells[0].textContent;
+        break;
+      case 'email':
+        aValue = a.cells[1].textContent;
+        bValue = b.cells[1].textContent;
+        break;
+      case 'firstName':
+        aValue = a.cells[2].textContent;
+        bValue = b.cells[2].textContent;
+        break;
+      case 'lastName':
+        aValue = a.cells[3].textContent;
+        bValue = b.cells[3].textContent;
+        break;
+      case 'role':
+        aValue = a.cells[4].textContent;
+        bValue = b.cells[4].textContent;
+        break;
+      default:
+        aValue = a.cells[0].textContent;
+        bValue = b.cells[0].textContent;
+    }
+    if (sortOrder === 'asc') {
+      return aValue.localeCompare(bValue);
+    } else {
+      return bValue.localeCompare(aValue);
+    }
+  });
+  tableBody.innerHTML = '';
+  for (let i = 0; i < rows.length; i++) {
+    tableBody.appendChild(rows[i]);
+  }
+});
+
+  // Toggle sort order button
+  sortOrderButton.addEventListener('click', () => {
+    const currentSortOrder = sortOrderButton.textContent;
+    sortOrderButton.textContent = currentSortOrder === 'Ascending' ? 'Descending' : 'Ascending';
+  });
+</script>
+</body>
+</html>
